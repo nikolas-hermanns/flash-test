@@ -1,0 +1,10 @@
+env:
+  cloud_deployer: fuel
+  hypervisor_ssh_user: root
+  nodes:
+    main_controller:
+      address: 10.20.0.3
+      user: root
+  test_vm:
+    user: cirros
+    password: 'cubswin:)'

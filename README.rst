@@ -9,9 +9,9 @@ Please feel here a long description which must be at least 3 lines wrapped on
 Note that this is a hard requirement.
 
 * Free software: Apache license
-* Documentation: http://docs.openstack.org/developer/flash-test
-* Source: http://git.openstack.org/cgit/opnfv/flash-test
-* Bugs: http://bugs.launchpad.net/flash-test
+* Documentation: 
+* Source: 
+* Bugs: 
 
 Features
 --------

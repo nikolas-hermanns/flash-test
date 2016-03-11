@@ -3,3 +3,6 @@
 # process, which may cause wedges in the gate later.
 
 pbr>=1.6
+eventlet
+oslo_utils
+python-novaclient
