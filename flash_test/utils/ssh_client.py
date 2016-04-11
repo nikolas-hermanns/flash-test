@@ -25,7 +25,7 @@ class SSHClient(object):
             cmd = ['sshpass', '-p', self.node.password] + cmd
         if not self.node.has_access:
             with open(SshUtil.get_id_rsa() + ".pub") as pub_key_file:
-                pub_key = pub_key_file.read_all()
+                pub_key = pub_key_file.read()
                 try:
                     execfile(cmd.append('echo %s >> ~/.ssh/authorized_keys'
                                         % pub_key))
