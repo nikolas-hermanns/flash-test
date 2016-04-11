@@ -43,7 +43,7 @@ class OpenstackEnv(object):
                 cls.main_controller = new_node
 
         # Jump: string to real objects
-        for node in cls.config['env']['nodes']:
+        for (name, node) in cls.config['env']['nodes'].iteritems():
             jump = node.get('jump')
             if jump:
                 node['jump'] = cls.config['env']['nodes'][jump]
