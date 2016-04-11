@@ -13,14 +13,14 @@ class Node(object):
     '''
 
     def __init__(self, name, address=None, port=None,
-                 user=None, password=None, jump=None, dic=None):
+                 user=None, password=None, jump=None, dict=None):
         self.name = name
         self.address = address
         self.jump = jump
         self.user = user
         self.password = password
-        if dic:
-            self.read_from_dic(dic)
+        if dict:
+            self.read_from_dic(dict)
         self.sshc = SSHClient(self)
         self.has_access = False
 

@@ -37,10 +37,13 @@ class OpenstackEnv(object):
                             % FLASH_TEST_CONFIG_YAML)
         # add all nodes
         for (name, node) in cls.config['env']['nodes'].iteritems():
-            new_node = Node(name, node)
+            new_node = Node(name, dict=node)
             cls.env_nodes.append(new_node)
             if name == "main_controller":
                 cls.main_controller = new_node
+
+        # Jump to real objects
+        
 
         # All openstack hypervisors
         nova_hypervisors = cls._novacl.hypervisors.list()
