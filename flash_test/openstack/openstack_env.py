@@ -57,9 +57,8 @@ class OpenstackEnv(object):
     @classmethod
     def gen_ssh_config(cls, node):
         if node not in cls.env_nodes:
-            SshUtil.gen_ssh_config(cls.env_nodes + [node])
-        else:
-            SshUtil.gen_ssh_config(cls.env_nodes)
+            cls.env_nodes.append(node)
+        SshUtil.gen_ssh_config(cls.env_nodes)
 
     @classmethod
     def delete_server(cls, serverid):

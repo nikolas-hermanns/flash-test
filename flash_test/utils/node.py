@@ -22,6 +22,7 @@ class Node(object):
         if dic:
             self.read_from_dic(dic)
         self.sshc = SSHClient(self)
+        self.has_access = False
 
     def read_from_dic(self, dic):
         for (key, value) in dic.iteritems():

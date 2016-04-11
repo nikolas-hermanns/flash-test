@@ -20,7 +20,19 @@ class SSHClient(object):
         command_as_string = ' '.join(cmd)
         cmd = ['ssh', '-i', SshUtil.get_id_rsa(), '-F',
                SshUtil.get_config_file_path(),
-               self.node.name, command_as_string]
+               self.node.name]
         if self.node.password:
             cmd = ['sshpass', '-p', self.node.password] + cmd
-        return execute(cmd, **kwargs)
+        if not self.node.has_access:
+            with open(SshUtil.get_id_rsa() + ".pub") as pub_key_file:
+                pub_key = pub_key_file.read_all()
+                try:
+                    execfile(cmd.append('echo %s >> ~/.ssh/authorized_keys'
+                                        % pub_key))
+                except Exception:
+                    self.node.jump.execute(
+                        'ssh %s '
+                        '\'echo %s >> ~/.ssh/authorized_keys\''
+                        % (self.node.address, pub_key))
+            self.node.has_access = True
+        return execute(cmd.append(command_as_string), **kwargs)

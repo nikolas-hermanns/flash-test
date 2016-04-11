@@ -4,7 +4,6 @@ Created on Mar 14, 2016
 @author: enikher
 '''
 TMP_SSH_CONFIG = "/tmp/flash_test_ssh_config"
-SSH_KEY = "~/.flash_test/id_rsa"
 
 
 class SshUtil(object):
@@ -27,4 +26,4 @@ class SshUtil(object):
 
     @staticmethod
     def get_id_rsa():
-        return SSH_KEY
+        return "~/.ssh/id_rsa"
