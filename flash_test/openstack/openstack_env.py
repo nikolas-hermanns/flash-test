@@ -47,7 +47,7 @@ class OpenstackEnv(object):
             jump = node.get('jump')
             if jump:
                 for node_jumb in cls.env_nodes:
-                    if node_jumb == jump:
+                    if node_jumb.name == jump:
                         node['jump'] = node_jumb
 
         # All openstack hypervisors
