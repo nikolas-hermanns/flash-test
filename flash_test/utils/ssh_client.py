@@ -18,7 +18,8 @@ class SSHClient(object):
         from flash_test.openstack.openstack_env import OpenstackEnv
         OpenstackEnv.gen_ssh_config(self.node)
         command_as_string = ' '.join(cmd)
-        cmd = ['ssh', '-F', SshUtil.get_config_file_path(),
+        cmd = ['ssh', '-i', SshUtil.get_id_rsa(), '-F',
+               SshUtil.get_config_file_path(),
                self.node.name, command_as_string]
         if self.node.password:
             cmd = ['sshpass', '-p', self.node.password] + cmd
