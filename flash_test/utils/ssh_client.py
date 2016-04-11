@@ -27,12 +27,14 @@ class SSHClient(object):
             with open(SshUtil.get_id_rsa() + ".pub") as pub_key_file:
                 pub_key = pub_key_file.read()
                 try:
-                    execfile(cmd.append('echo %s >> ~/.ssh/authorized_keys'
-                                        % pub_key))
+                    cmd = cmd.append('echo %s >> ~/.ssh/authorized_keys'
+                                     % pub_key)
+                    execute(cmd)
                 except Exception:
                     self.node.jump.execute(
                         'ssh %s '
                         '\'echo %s >> ~/.ssh/authorized_keys\''
                         % (self.node.address, pub_key))
             self.node.has_access = True
-        return execute(cmd.append(command_as_string), **kwargs)
+        cmd = cmd.append(command_as_string)
+        return execute(cmd, **kwargs)
