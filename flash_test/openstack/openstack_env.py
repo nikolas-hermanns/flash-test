@@ -46,7 +46,9 @@ class OpenstackEnv(object):
         for (name, node) in cls.config['env']['nodes'].iteritems():
             jump = node.get('jump')
             if jump:
-                node['jump'] = cls.config['env']['nodes'][jump]
+                for node_jumb in cls.env_nodes:
+                    if node_jumb == jump:
+                        node['jump'] = cls.config['env']['nodes'][jump]
 
         # All openstack hypervisors
         nova_hypervisors = cls._novacl.hypervisors.list()
